@@ -11,13 +11,23 @@ function newGrid() {
     for (i=0; i<totalBoxes; i++) { 
         createDivs(); 
     }
+    
 }
 
 function createDivs() {
     let div = document.createElement('div');
     grid.appendChild(div);
     div.classList.add('box');
+    
 }
 
 container.appendChild(grid);
 newGrid();
+
+const gridItems = document.querySelectorAll('.box');
+for (let gridItem of gridItems) {
+    gridItem.addEventListener('click', function () {
+        gridItem.style.background = 'purple';
+    }
+)}
+
