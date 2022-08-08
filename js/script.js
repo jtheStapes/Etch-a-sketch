@@ -1,9 +1,15 @@
 // Creating the grid
 const container = document.querySelector('.container');
 const grid = document.createElement('div');
+const body = document.createElement('div');
+const sidebar = document.createElement('div'); //Create sidebar for erasing, changing colors, clearing, etc
+const clear = document.createElement('button');
+body.classList.add('body');
 grid.classList.add('grid');
+sidebar.classList.add('sidebar'); 
+clear.classList.add('clear');
 
-function newGrid() {
+function newGrid() { //Creates a grid with size based on user input
     numBoxes = parseInt(prompt ("Enter grid width in # of boxes"));
     totalBoxes = numBoxes * numBoxes;
     grid.style.gridTemplateColumns = "repeat("+numBoxes+", 1fr)";
@@ -14,19 +20,22 @@ function newGrid() {
     
 }
 
-function createDivs() {
+function createDivs() { //Creates grid items based on user input
     let div = document.createElement('div');
     grid.appendChild(div);
     div.classList.add('box');
     
 }
 
-container.appendChild(grid);
+sidebar.appendChild(clear);
+body.appendChild(sidebar);
+body.appendChild(grid);
+container.appendChild(body);
 newGrid();
 
 const gridItems = document.querySelectorAll('.box');
 for (let gridItem of gridItems) {
-    gridItem.addEventListener('click', function () {
+    gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
         gridItem.style.background = 'purple';
     }
 )}
