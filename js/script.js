@@ -28,11 +28,11 @@ function createDivs() { //Creates grid items based on user input
     
 }
 
+newGrid();
 sidebar.appendChild(clear);
 body.appendChild(sidebar);
 body.appendChild(grid);
 container.appendChild(body);
-newGrid();
 
 const gridItems = document.querySelectorAll('.box');
 for (let gridItem of gridItems) {
@@ -40,4 +40,10 @@ for (let gridItem of gridItems) {
         gridItem.style.background = 'purple';
     }
 )}
+
+clear.addEventListener('click', () => { //Clears the grid
+    gridItems.forEach(gridItem => {
+        gridItem.style.background = 'white';
+    })
+})
 
