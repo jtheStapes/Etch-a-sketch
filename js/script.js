@@ -12,7 +12,10 @@ clear.classList.add('clear');
 clear.textContent = 'Clear';
 
 function newGrid() { //Creates a grid with size based on user input
-    numBoxes = parseInt(prompt ("Enter grid width in # of boxes"));
+    numBoxes = parseInt(prompt ("Enter grid width in # of boxes (cannot exceed 100)"));
+    if (numBoxes > 100) {
+        return '';
+    }
     totalBoxes = numBoxes * numBoxes;
     grid.style.gridTemplateColumns = "repeat("+numBoxes+", 1fr)";
     grid.style.gridTemplateRows = "repeat("+numBoxes+", 1fr)";
