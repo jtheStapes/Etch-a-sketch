@@ -1,15 +1,24 @@
+.header {
+    display: flex;
+}
+
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
     display: grid;
     gap: 5px;
-    box-sizing: border-box;
-    width: 960px;
-    height: 960px;
+    padding: 0;
+    margin: none;
+    width: 500px;
+    height: 500px;
     background-color: #8cffa0;
-    padding: 10px;
-    margin: 0;
   }
   
-.container > div {
+.grid > div {
     background-color: #8ca0ff;
-    padding: 5px;
   }
