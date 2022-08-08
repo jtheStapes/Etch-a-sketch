@@ -8,6 +8,7 @@ body.classList.add('body');
 grid.classList.add('grid');
 sidebar.classList.add('sidebar'); 
 clear.classList.add('clear');
+clear.textContent = 'Clear';
 
 function newGrid() { //Creates a grid with size based on user input
     numBoxes = parseInt(prompt ("Enter grid width in # of boxes"));
