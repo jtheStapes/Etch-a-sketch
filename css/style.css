@@ -1,3 +1,7 @@
+body {
+    background-color: grey;
+}
+
 .header {
     display: flex;
 }
@@ -11,14 +15,17 @@
 
 .grid {
     display: grid;
-    gap: 5px;
     padding: 0;
-    margin: none;
+    margin: 0;
     width: 500px;
     height: 500px;
-    background-color: #8cffa0;
-  }
+    background-color: white;
+}
   
-.grid > div {
-    background-color: #8ca0ff;
-  }
+.grid > .box {
+    background-color: white;
+}
+
+.box:hover {
+    background-color: purple;
+}
