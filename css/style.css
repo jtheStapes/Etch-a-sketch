@@ -1,9 +1,13 @@
 body {
     background-color: grey;
+    display: flex;
+    flex: 1;
+    justify-content: center;
 }
 
 .header {
-    display: flex;
+    font-size: 72px;
+    margin-bottom: 100px;
 }
 
 .container {
@@ -16,12 +20,14 @@ body {
 .body {
     display: flex;
     gap: 200px;
+    
 }
 
 .grid {
     display: grid;
+    align-self: center;
     padding: 0;
-    margin: 0;
+    margin-right: 250px;
     width: 500px;
     height: 500px;
     background-color: white;

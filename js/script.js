@@ -4,6 +4,7 @@ const grid = document.createElement('div');
 const body = document.createElement('div');
 const sidebar = document.createElement('div'); //Create sidebar for erasing, changing colors, clearing, etc
 const clear = document.createElement('button');
+const header = document.querySelector('h1');
 body.classList.add('body');
 grid.classList.add('grid');
 sidebar.classList.add('sidebar'); 
