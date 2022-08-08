@@ -1,0 +1,15 @@
+.container {
+    display: grid;
+    gap: 5px;
+    box-sizing: border-box;
+    width: 960px;
+    height: 960px;
+    background-color: #8cffa0;
+    padding: 10px;
+    margin: 0;
+  }
+  
+.container > div {
+    background-color: #8ca0ff;
+    padding: 5px;
+  }
