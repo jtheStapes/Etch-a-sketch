@@ -31,6 +31,13 @@ newGrid.addEventListener('click', () => {
     colorGrid();
 })
 
+const gridItems = document.querySelectorAll('.box');
+for (let gridItem of gridItems) {
+    gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
+        gridItem.style.background = 'purple';
+    }
+)}
+
 function colorGrid () {
     const gridItems = document.querySelectorAll('.box');
     for (let gridItem of gridItems) {
@@ -46,13 +53,6 @@ function clearGrid() {
         gridItem.style.background = 'white';
     })
 }
-
-const gridItems = document.querySelectorAll('.box');
-for (let gridItem of gridItems) {
-    gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
-        gridItem.style.background = 'purple';
-    }
-)}
 
 function initialGrid() { //Creates the initial grid with the size based on user input
     numBoxes = parseInt(prompt ("Enter grid width in # of boxes (cannot exceed 64)"));
