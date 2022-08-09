@@ -55,7 +55,6 @@ button:hover {
     display: grid;
     align-self: center;
     padding: 0;
-    margin-right: 400px;
     width: 500px;
     height: 500px;
     background-color: white;

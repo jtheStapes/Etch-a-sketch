@@ -7,6 +7,8 @@ const clear = document.createElement('button');
 const eraser = document.createElement('button');
 const newGrid = document.createElement('button');
 const header = document.querySelector('h1');
+let color = document.getElementById('color');
+let colorSelection;
 
 body.classList.add('body');
 grid.classList.add('grid');
@@ -42,17 +44,38 @@ eraser.addEventListener('click', () => { //Erases individual grid items
 })
 
 const gridItems = document.querySelectorAll('.box');
-for (let gridItem of gridItems) {
-    gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
-        gridItem.style.background = 'black';
-    }
-)}
+    colorSelection = 'black';
+    color.addEventListener('change', (e) => {
+        colorSelection = e.target.value;
+    })
+    for (let gridItem of gridItems) {
+        gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
+            gridItem.style.background = colorSelection;
+        }
+    )}
 
+/*
 function colorGrid () { //Colors each div when mouse passes over
     const gridItems = document.querySelectorAll('.box');
     for (let gridItem of gridItems) {
         gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
             gridItem.style.background = 'black';
+        }
+    )}
+}
+*/
+
+
+
+function colorGrid () { //Colors each div when mouse passes over
+    const gridItems = document.querySelectorAll('.box');
+    colorSelection = 'black';
+    color.addEventListener('change', (e) => {
+        colorSelection = e.target.value;
+    })
+    for (let gridItem of gridItems) {
+        gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
+            gridItem.style.background = colorSelection;
         }
     )}
 }
