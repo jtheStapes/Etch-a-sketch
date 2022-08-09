@@ -27,6 +27,20 @@ body {
     flex-direction: column;
 }
 
+button {
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 36px;
+    padding: 15px;
+    background-color: transparent;
+}
+
+button:hover {
+    background-color: rgb(181, 212, 240);
+    transition: 0.2s;
+    transform: scale(1.1);
+}
+
 .grid {
     display: grid;
     align-self: center;
