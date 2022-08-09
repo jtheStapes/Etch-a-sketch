@@ -5,16 +5,18 @@ const body = document.createElement('div');
 const sidebar = document.createElement('div'); //Create sidebar for erasing, changing colors, clearing, etc
 const clear = document.createElement('button');
 const header = document.querySelector('h1');
+
 body.classList.add('body');
 grid.classList.add('grid');
 sidebar.classList.add('sidebar'); 
 clear.classList.add('clear');
 clear.textContent = 'Clear';
 
-function newGrid() { //Creates a grid with size based on user input
-    numBoxes = parseInt(prompt ("Enter grid width in # of boxes (cannot exceed 100)"));
-    if (numBoxes > 100) {
-        return '';
+
+function initialGrid() { //Creates the initial grid with the size based on user input
+    numBoxes = parseInt(prompt ("Enter grid width in # of boxes (cannot exceed 64)"));
+    while (numBoxes > 64) {
+        numBoxes = parseInt(prompt ("Too large a number. Enter a grid width of 64 or lower"));
     }
     totalBoxes = numBoxes * numBoxes;
     grid.style.gridTemplateColumns = "repeat("+numBoxes+", 1fr)";
@@ -32,7 +34,7 @@ function createDivs() { //Creates grid items based on user input
     
 }
 
-newGrid();
+initialGrid();
 sidebar.appendChild(clear);
 body.appendChild(sidebar);
 body.appendChild(grid);
@@ -50,4 +52,3 @@ clear.addEventListener('click', () => { //Clears the grid
         gridItem.style.background = 'white';
     })
 })
-

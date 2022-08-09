@@ -22,6 +22,11 @@ body {
     gap: 200px;
 }
 
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
 .grid {
     display: grid;
     align-self: center;
