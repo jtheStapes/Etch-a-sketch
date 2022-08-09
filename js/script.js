@@ -28,9 +28,9 @@ color.textContent = 'Color';
 makeGrid();
 sidebar.appendChild(colorSelector);
 sidebar.appendChild(color);
-sidebar.appendChild(newGrid);
 sidebar.appendChild(eraser);
 sidebar.appendChild(clear);
+sidebar.appendChild(newGrid);
 body.appendChild(sidebar);
 body.appendChild(grid);
 container.appendChild(body);
@@ -56,10 +56,11 @@ color.addEventListener('click', () => {
     colorGrid();
 })
 
+
 const gridItems = document.querySelectorAll('.box');
+    color.classList.add('selected');
     colorSelection = 'black';
     colorSelector.addEventListener('change', (e) => {
-        eraser.classList.remove('selected');
         colorSelection = e.target.value;
     })
     for (let gridItem of gridItems) {
@@ -67,6 +68,7 @@ const gridItems = document.querySelectorAll('.box');
             gridItem.style.background = colorSelection;
         }
     )}
+
 
 function colorGrid () { //Colors each div when mouse passes over
     const gridItems = document.querySelectorAll('.box');
