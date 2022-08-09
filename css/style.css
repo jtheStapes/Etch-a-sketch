@@ -33,6 +33,11 @@ body {
     gap: 12px;
 }
 
+#colorSelector {
+    width: 200px;
+    height: 76px;
+}
+
 button {
     width: 200px;
     border-radius: 5px;
@@ -42,7 +47,7 @@ button {
     background-color: transparent;
 }
 
-button:hover {
+button:hover, #color:hover {
     transition: 0.2s;
     transform: scale(1.1);
 }

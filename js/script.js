@@ -5,12 +5,12 @@ const body = document.createElement('div');
 const sidebar = document.createElement('div'); //Create sidebar for erasing, changing colors, clearing, etc
 const clear = document.createElement('button');
 const eraser = document.createElement('button');
+const color = document.createElement('button');
 const newGrid = document.createElement('button');
 const header = document.querySelector('h1');
-let color = document.createElement('input');
-color.type = 'color';
-color.setAttribute('id', 'color');
-//let color = document.getElementById('color');
+let colorSelector = document.createElement('input');
+colorSelector.type = 'color';
+colorSelector.setAttribute('id', 'colorSelector');
 let colorSelection;
 
 body.classList.add('body');
@@ -22,8 +22,11 @@ newGrid.classList.add('newGrid');
 newGrid.textContent = 'New';
 eraser.classList.add('eraser');
 eraser.textContent = 'Eraser';
+color.classList.add('color');
+color.textContent = 'Color';
 
 makeGrid();
+sidebar.appendChild(colorSelector);
 sidebar.appendChild(color);
 sidebar.appendChild(newGrid);
 sidebar.appendChild(eraser);
@@ -42,13 +45,21 @@ newGrid.addEventListener('click', () => { //Clears grid then makes a new one bas
 })
 
 eraser.addEventListener('click', () => { //Erases individual grid items
+    color.classList.remove('selected');
     eraser.classList.add('selected');
     eraseGridItems();
 })
 
+color.addEventListener('click', () => {
+    eraser.classList.remove('selected');
+    color.classList.add('selected');
+    colorGrid();
+})
+
 const gridItems = document.querySelectorAll('.box');
     colorSelection = 'black';
-    color.addEventListener('change', (e) => {
+    colorSelector.addEventListener('change', (e) => {
+        eraser.classList.remove('selected');
         colorSelection = e.target.value;
     })
     for (let gridItem of gridItems) {
@@ -59,7 +70,8 @@ const gridItems = document.querySelectorAll('.box');
 
 function colorGrid () { //Colors each div when mouse passes over
     const gridItems = document.querySelectorAll('.box');
-    color.addEventListener('change', (e) => {
+    colorSelector.addEventListener('change', (e) => {
+        eraser.classList.remove('selected');
         colorSelection = e.target.value;
     })
     for (let gridItem of gridItems) {
