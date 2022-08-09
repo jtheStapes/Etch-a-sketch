@@ -3,6 +3,8 @@ body {
     display: flex;
     flex: 1;
     justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
 .header {
@@ -36,7 +38,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(181, 212, 240);
+    background-color:rgb(182, 220, 241);
     transition: 0.2s;
     transform: scale(1.1);
 }
@@ -45,7 +47,7 @@ button:hover {
     display: grid;
     align-self: center;
     padding: 0;
-    margin-right: 250px;
+    margin-right: 325px;
     width: 500px;
     height: 500px;
     background-color: white;
