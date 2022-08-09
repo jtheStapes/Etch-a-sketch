@@ -73,7 +73,6 @@ const gridItems = document.querySelectorAll('.box');
 function colorGrid () { //Colors each div when mouse passes over
     const gridItems = document.querySelectorAll('.box');
     colorSelector.addEventListener('change', (e) => {
-        eraser.classList.remove('selected');
         colorSelection = e.target.value;
     })
     for (let gridItem of gridItems) {
