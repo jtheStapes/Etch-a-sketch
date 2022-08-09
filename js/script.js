@@ -7,7 +7,10 @@ const clear = document.createElement('button');
 const eraser = document.createElement('button');
 const newGrid = document.createElement('button');
 const header = document.querySelector('h1');
-let color = document.getElementById('color');
+let color = document.createElement('input');
+color.type = 'color';
+color.setAttribute('id', 'color');
+//let color = document.getElementById('color');
 let colorSelection;
 
 body.classList.add('body');
@@ -21,6 +24,7 @@ eraser.classList.add('eraser');
 eraser.textContent = 'Eraser';
 
 makeGrid();
+sidebar.appendChild(color);
 sidebar.appendChild(newGrid);
 sidebar.appendChild(eraser);
 sidebar.appendChild(clear);
@@ -35,7 +39,6 @@ clear.addEventListener('click', () => { //Clears the grid
 newGrid.addEventListener('click', () => { //Clears grid then makes a new one based on size inputted by user
     makeGrid();
     clearGrid();
-    colorGrid();
 })
 
 eraser.addEventListener('click', () => { //Erases individual grid items
@@ -54,22 +57,8 @@ const gridItems = document.querySelectorAll('.box');
         }
     )}
 
-/*
 function colorGrid () { //Colors each div when mouse passes over
     const gridItems = document.querySelectorAll('.box');
-    for (let gridItem of gridItems) {
-        gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
-            gridItem.style.background = 'black';
-        }
-    )}
-}
-*/
-
-
-
-function colorGrid () { //Colors each div when mouse passes over
-    const gridItems = document.querySelectorAll('.box');
-    colorSelection = 'black';
     color.addEventListener('change', (e) => {
         colorSelection = e.target.value;
     })
@@ -107,6 +96,7 @@ function makeGrid() { //Creates a grid with the size based on user input
     for (i=0; i<totalBoxes; i++) { 
         createDivs(); 
     }
+    colorGrid();
 }
 
 function createDivs() { //Creates grid items based on user input
