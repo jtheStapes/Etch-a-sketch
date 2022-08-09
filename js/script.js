@@ -27,16 +27,19 @@ body.appendChild(grid);
 container.appendChild(body);
 
 clear.addEventListener('click', () => { //Clears the grid
+    eraser.classList.remove('selected');
     clearGrid();
 })
 
 newGrid.addEventListener('click', () => { //Clears grid then makes a new one based on size inputted by user
+    eraser.classList.remove('selected');
     makeGrid();
     clearGrid();
     colorGrid();
 })
 
-eraser.addEventListener('click', () => {
+eraser.addEventListener('click', () => { //Erases individual grid items
+    eraser.classList.add('selected');
     eraseGridItems();
 })
 
