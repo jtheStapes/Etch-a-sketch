@@ -28,6 +28,7 @@ clear.addEventListener('click', () => { //Clears the grid
 
 newGrid.addEventListener('click', () => {
     initialGrid();
+    clearGrid();
     colorGrid();
 })
 
