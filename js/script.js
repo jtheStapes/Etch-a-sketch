@@ -1,4 +1,4 @@
-// Creating the grid
+// Creating the webpage
 const container = document.querySelector('.container');
 const grid = document.createElement('div');
 const body = document.createElement('div');
@@ -14,7 +14,7 @@ let colorSelector = document.createElement('input');
 colorSelector.type = 'color';
 colorSelector.setAttribute('id', 'colorSelector');
 let colorSelection;
-//let shadeColor;
+let shadeColor;
 
 body.classList.add('body');
 grid.classList.add('grid');
@@ -77,7 +77,6 @@ random.addEventListener('click', () => {
     randomColorGrid();
 })
 
-/*
 shade.addEventListener('click', () => {
     eraser.classList.remove('selected');
     color.classList.remove('selected');
@@ -85,7 +84,6 @@ shade.addEventListener('click', () => {
     shade.classList.add('selected');
     shadeGrid();
 })
-*/
 
 const gridItems = document.querySelectorAll('.box');
     color.classList.add('selected');
@@ -117,29 +115,24 @@ function randomColorGrid () {
     )}
 }
 
-/*
-function createShade() {
-    colorSelection = 255;
-    while (colorSelection !== 0) {
-        shadeColor = `rgb(${colorSelection}, ${colorSelection}, ${colorSelection})`;
-        colorSelection -= 25.5;
-        console.log(colorSelection);
-    }
-    return shadeColor;
-}
-
 function shadeGrid () {
     const gridItems = document.querySelectorAll('.box');
     for (let gridItem of gridItems) {
-        gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
-            for (i = 10; i > 0; i--) {
-                gridItem.style.background = createShade();
-                console.log(colorSelection);
+        gridItem.addEventListener('mouseover', () => {
+            let rbgPercent = parseInt(gridItem.dataset.percent);
+            if (isNaN(rbgPercent)) rbgPercent = 100;
+            if (rbgPercent >= 10) {
+                rbgPercent -= 10;
+                gridItem.dataset.percent = rbgPercent;
             }
-        }
-    )}
+            let rbgValue = `rgb(${rbgPercent}%,${rbgPercent}%,${rbgPercent}%)`;
+            if (gridItem !== gridItems) {
+                gridItem.style.background = rbgValue;
+            }
+        }) 
+    }
 }
-*/
+
 
 function colorGrid () { //Colors each div when mouse passes over
     const gridItems = document.querySelectorAll('.box');
@@ -147,16 +140,16 @@ function colorGrid () { //Colors each div when mouse passes over
         colorSelection = e.target.value;
     })
     for (let gridItem of gridItems) {
-        gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
+        gridItem.addEventListener('mouseover', function () { 
             gridItem.style.background = colorSelection;
         }
     )}
 }
 
-function eraseGridItems () {
+function eraseGridItems () { //Erases grid when mouse passes over
     const gridItems = document.querySelectorAll('.box');
     for (let gridItem of gridItems) {
-        gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
+        gridItem.addEventListener('mouseover', function () { 
             gridItem.style.background = 'white';
         }
     )}
@@ -180,10 +173,9 @@ function makeGrid() { //Creates a grid with the size based on user input
     for (i=0; i<totalBoxes; i++) { 
         createDivs(); 
     }
-    colorGrid();
 }
 
-function createDivs() { //Creates grid items based on user input
+function createDivs() { 
     let div = document.createElement('div');
     grid.appendChild(div);
     div.classList.add('box');
