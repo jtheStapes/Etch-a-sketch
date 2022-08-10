@@ -32,7 +32,6 @@ random.textContent = 'Random';
 shade.classList.add('shade');
 shade.textContent = 'Shade';
 
-makeGrid();
 sidebar.appendChild(colorSelector);
 sidebar.appendChild(color);
 sidebar.appendChild(random);
@@ -50,6 +49,7 @@ clear.addEventListener('click', () => { //Clears the grid
 
 newGrid.addEventListener('click', () => { //Clears grid then makes a new one based on size inputted by user
     makeGrid();
+    colorGrid();
     clearGrid();
 })
 
