@@ -7,12 +7,14 @@ const clear = document.createElement('button');
 const eraser = document.createElement('button');
 const color = document.createElement('button');
 const random = document.createElement('button');
+const shade = document.createElement('button');
 const newGrid = document.createElement('button');
 const header = document.querySelector('h1');
 let colorSelector = document.createElement('input');
 colorSelector.type = 'color';
 colorSelector.setAttribute('id', 'colorSelector');
 let colorSelection;
+//let shadeColor;
 
 body.classList.add('body');
 grid.classList.add('grid');
@@ -27,11 +29,14 @@ color.classList.add('color');
 color.textContent = 'Color';
 random.classList.add('random');
 random.textContent = 'Random';
+shade.classList.add('shade');
+shade.textContent = 'Shade';
 
 makeGrid();
 sidebar.appendChild(colorSelector);
 sidebar.appendChild(color);
 sidebar.appendChild(random);
+sidebar.appendChild(shade);
 sidebar.appendChild(eraser);
 sidebar.appendChild(clear);
 sidebar.appendChild(newGrid);
@@ -49,6 +54,7 @@ newGrid.addEventListener('click', () => { //Clears grid then makes a new one bas
 })
 
 eraser.addEventListener('click', () => { //Erases individual grid items
+    shade.classList.remove('selected');
     color.classList.remove('selected');
     random.classList.remove('selected');
     eraser.classList.add('selected');
@@ -56,6 +62,7 @@ eraser.addEventListener('click', () => { //Erases individual grid items
 })
 
 color.addEventListener('click', () => {
+    shade.classList.remove('selected');
     eraser.classList.remove('selected');
     random.classList.remove('selected');
     color.classList.add('selected');
@@ -63,12 +70,22 @@ color.addEventListener('click', () => {
 })
 
 random.addEventListener('click', () => {
+    shade.classList.remove('selected');
     eraser.classList.remove('selected');
     color.classList.remove('selected');
     random.classList.add('selected');
     randomColorGrid();
 })
 
+/*
+shade.addEventListener('click', () => {
+    eraser.classList.remove('selected');
+    color.classList.remove('selected');
+    random.classList.remove('selected');
+    shade.classList.add('selected');
+    shadeGrid();
+})
+*/
 
 const gridItems = document.querySelectorAll('.box');
     color.classList.add('selected');
@@ -85,7 +102,7 @@ const gridItems = document.querySelectorAll('.box');
 function getRandomColor() {
     let letters = '0123456789ABCDEF';
     let colorRgb = '#';
-    for (var i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i++) {
         colorRgb += letters[Math.floor(Math.random() * 16)];
     }
     return colorRgb;
@@ -99,6 +116,30 @@ function randomColorGrid () {
         }
     )}
 }
+
+/*
+function createShade() {
+    colorSelection = 255;
+    while (colorSelection !== 0) {
+        shadeColor = `rgb(${colorSelection}, ${colorSelection}, ${colorSelection})`;
+        colorSelection -= 25.5;
+        console.log(colorSelection);
+    }
+    return shadeColor;
+}
+
+function shadeGrid () {
+    const gridItems = document.querySelectorAll('.box');
+    for (let gridItem of gridItems) {
+        gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
+            for (i = 10; i > 0; i--) {
+                gridItem.style.background = createShade();
+                console.log(colorSelection);
+            }
+        }
+    )}
+}
+*/
 
 function colorGrid () { //Colors each div when mouse passes over
     const gridItems = document.querySelectorAll('.box');
