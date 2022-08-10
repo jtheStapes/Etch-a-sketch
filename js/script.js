@@ -6,6 +6,7 @@ const sidebar = document.createElement('div'); //Create sidebar for erasing, cha
 const clear = document.createElement('button');
 const eraser = document.createElement('button');
 const color = document.createElement('button');
+const random = document.createElement('button');
 const newGrid = document.createElement('button');
 const header = document.querySelector('h1');
 let colorSelector = document.createElement('input');
@@ -24,10 +25,13 @@ eraser.classList.add('eraser');
 eraser.textContent = 'Eraser';
 color.classList.add('color');
 color.textContent = 'Color';
+random.classList.add('random');
+random.textContent = 'Random';
 
 makeGrid();
 sidebar.appendChild(colorSelector);
 sidebar.appendChild(color);
+sidebar.appendChild(random);
 sidebar.appendChild(eraser);
 sidebar.appendChild(clear);
 sidebar.appendChild(newGrid);
@@ -46,14 +50,23 @@ newGrid.addEventListener('click', () => { //Clears grid then makes a new one bas
 
 eraser.addEventListener('click', () => { //Erases individual grid items
     color.classList.remove('selected');
+    random.classList.remove('selected');
     eraser.classList.add('selected');
     eraseGridItems();
 })
 
 color.addEventListener('click', () => {
     eraser.classList.remove('selected');
+    random.classList.remove('selected');
     color.classList.add('selected');
     colorGrid();
+})
+
+random.addEventListener('click', () => {
+    eraser.classList.remove('selected');
+    color.classList.remove('selected');
+    random.classList.add('selected');
+    randomColorGrid();
 })
 
 
@@ -69,6 +82,23 @@ const gridItems = document.querySelectorAll('.box');
         }
     )}
 
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let colorRgb = '#';
+    for (var i = 0; i < 6; i++) {
+        colorRgb += letters[Math.floor(Math.random() * 16)];
+    }
+    return colorRgb;
+}
+
+function randomColorGrid () {
+    const gridItems = document.querySelectorAll('.box');
+    for (let gridItem of gridItems) {
+        gridItem.addEventListener('mouseover', function () { //Colors the grid items on mouseover
+            gridItem.style.background = getRandomColor();
+        }
+    )}
+}
 
 function colorGrid () { //Colors each div when mouse passes over
     const gridItems = document.querySelectorAll('.box');
