@@ -164,7 +164,7 @@ function clearGrid() { //Clears the current grid
 }
 
 function makeGrid() { //Creates a grid with the size based on user input
-    numBoxes = parseInt(prompt ("Enter grid width in # of boxes (cannot exceed 64)"));
+    numBoxes = parseInt(prompt ("Enter grid width in # of boxes for sketching (cannot exceed 64)"));
     while (numBoxes > 64) {
         numBoxes = parseInt(prompt ("Too large a number. Enter a grid width of 64 or lower"));
     }
