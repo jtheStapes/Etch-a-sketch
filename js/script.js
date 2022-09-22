@@ -42,6 +42,7 @@ sidebar.appendChild(newGrid);
 body.appendChild(sidebar);
 body.appendChild(grid);
 container.appendChild(body);
+makeGrid();
 
 clear.addEventListener('click', () => { //Clears the grid
     clearGrid();
